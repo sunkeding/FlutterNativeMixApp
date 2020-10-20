@@ -1,0 +1,5 @@
+include ':app'
+setBinding(new Binding([gradle:this]))
+evaluate(new File(settingsDir,'my_flutter/.android/include_flutter.groovy'))
+rootProject.name = "FlutterNativeMixApp"
+include ':my_flutter'
