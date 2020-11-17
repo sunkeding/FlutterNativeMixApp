@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter/page/PersonalQrCodePage.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,7 +20,48 @@ class MyApp extends StatelessWidget {
         // counter didn't reset back to zero; the application is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page6RR'),
+      routes: {
+        "second":(context)=>PersonalQrCodePage(),
+        "third":(context)=>ThirdPage()
+      },
+      home: MyHomePage(title: 'Flutter Demo Home Page6dddd66'),
+    );
+  }
+}
+
+class SecondPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('Second Screen'),
+      ),
+      body: RaisedButton(
+          child: Text('Back to first screen'),
+          onPressed: ()=> Navigator.pop(context)
+      ),
+    );
+  }
+}
+class ThirdPage extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    String msg = ModalRoute.of(context).settings.arguments as String;
+
+    return  Scaffold(
+      appBar: AppBar(
+        title: Text('Third Screen'),
+      ),
+      body: Column(
+        children: <Widget>[
+          Text('Message from first screen: $msg'),
+          RaisedButton(
+              child: Text('back'),
+              onPressed: ()=> Navigator.pop(context,"Hi")
+          )
+        ],
+      ),
     );
   }
 }
